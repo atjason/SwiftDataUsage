@@ -4,3 +4,5 @@
 - Enable “Remove notifications”. 
 - Enable “CloudKit” services. 
 - Add container with id of “iCloud.xxx”.
+
+Note: After the container created, need to wait some time util it could be used.

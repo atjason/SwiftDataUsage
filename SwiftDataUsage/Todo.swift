@@ -9,10 +9,15 @@ import Foundation
 import SwiftData
 
 @Model
-final class Todo {
-  var timestamp: Date
+final class Todo: Equatable {
   
-  init(timestamp: Date) {
-    self.timestamp = timestamp
+  @Attribute(.unique)
+  let id = UUID()
+  var name: String = ""
+  var isDone: Bool = false
+  let createAt: Date = Date.now
+  
+  init(name: String) {
+    self.name = name
   }
 }
