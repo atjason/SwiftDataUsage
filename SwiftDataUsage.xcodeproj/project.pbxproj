@@ -58,8 +58,8 @@
 			isa = PBXGroup;
 			children = (
 				96CA53252B4D887600B08963 /* SwiftDataUsageApp.swift */,
-				96CA53272B4D887600B08963 /* ContentView.swift */,
-				96CA53292B4D887600B08963 /* Todo.swift */,
+				96CA53382B4D8B3B00B08963 /* Views */,
+				96CA53392B4D8B4D00B08963 /* Models */,
 				96CA532B2B4D887800B08963 /* Assets.xcassets */,
 				96CA53312B4D887800B08963 /* Info.plist */,
 				96CA53302B4D887800B08963 /* SwiftDataUsage.entitlements */,
@@ -74,6 +74,22 @@
 				96CA532E2B4D887800B08963 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		96CA53382B4D8B3B00B08963 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96CA53272B4D887600B08963 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		96CA53392B4D8B4D00B08963 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				96CA53292B4D887600B08963 /* Todo.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
