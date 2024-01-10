@@ -12,50 +12,37 @@ struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
   
   @Query(
-    filter: #Predicate<Todo>{ !$0.isDone },
+//    filter: #Predicate<Todo>{ !$0.isDone },
     sort: [
-//      .init(\Todo.isDone),
+      .init(\Todo.isDone),
       .init(\Todo.createAt, order: .reverse)
     ],
     animation: .bouncy)
-  private var todosOpen: [Todo]
+  private var todos: [Todo]
   
-  @Query(
-    filter: #Predicate<Todo>{ $0.isDone },
-    sort: [
-//      .init(\Todo.isDone),
-      .init(\Todo.createAt, order: .reverse)
-    ],
-    animation: .bouncy)
-  private var todosDone: [Todo]
+  @State private var showDone = true
   
   var body: some View {
     NavigationSplitView {
       List {
-        Section() {
-          ForEach(todosOpen) { todo in
+        ForEach(todos) { todo in
+          if (showDone || !todo.isDone) {
             NavigationLink {
               TodoDetail(todo: todo)
             } label: {
               TodoRow(todo: todo)
             }
           }
-          .onDelete(perform: deleteItems)
         }
-        
-        Section("Done") {
-          ForEach(todosDone) { todo in
-            NavigationLink {
-              TodoDetail(todo: todo)
-            } label: {
-              TodoRow(todo: todo)
-            }
-          }
-          .onDelete(perform: deleteItems)
-        }
+        .onDelete(perform: deleteItems)
       }
       .navigationTitle("Todo")
       .toolbar {
+        ToolbarItem(placement: .navigationBarLeading) {
+          Button(action: { showDone.toggle() }) {
+            Label("Show Done Tasks", systemImage: showDone ? "checkmark.circle.fill" : "circle")
+          }
+        }
         ToolbarItem(placement: .navigationBarTrailing) {
           EditButton()
         }
@@ -80,7 +67,7 @@ struct ContentView: View {
   private func deleteItems(offsets: IndexSet) {
     withAnimation {
       for index in offsets {
-        modelContext.delete(todosOpen[index])
+        modelContext.delete(todos[index])
       }
     }
   }
