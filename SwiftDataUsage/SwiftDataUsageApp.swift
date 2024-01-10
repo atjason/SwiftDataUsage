@@ -10,11 +10,16 @@ import SwiftData
 
 @main
 struct SwiftDataUsageApp: App {
-  var sharedModelContainer: ModelContainer = {
+  
+  let sharedModelContainer: ModelContainer = {
     let schema = Schema([
       Todo.self,
     ])
-    let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+    let modelConfiguration = ModelConfiguration(
+      schema: schema,
+  //    cloudKitDatabase: .private("iCloud.net.toolinbox.SwiftDataUsage"),
+      isStoredInMemoryOnly: false
+    )
     
     do {
       return try ModelContainer(for: schema, configurations: [modelConfiguration])
