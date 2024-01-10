@@ -26,5 +26,7 @@ struct TodoDetail: View {
 }
 
 #Preview {
-  TodoDetail(todo: Todo(name: "New"))
+  let todo = Todo(name: "New Task")
+  todo.isDone = true
+  return TodoDetail(todo: todo)
 }

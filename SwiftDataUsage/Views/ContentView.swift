@@ -19,7 +19,7 @@ struct ContentView: View {
           NavigationLink {
             TodoDetail(todo: todo)
           } label: {
-            Text(todo.name)
+            TodoRow(todo: todo)
           }
         }
         .onDelete(perform: deleteItems)
