@@ -34,6 +34,10 @@ Use `.modelContainer(sharedModelContainer)` to debug. Use `.modelContainer(for: 
 
 ### Can't pause or stop sync via CloudKit once it's enabled.
 
+### Can't manually deal with conflict and merge.
+
+As everything is automatically, seems can't 'manually deal with conflict and merge. Maybe could deep into CloudKit itself to do it.
+
 ## Other Tips
 
 View CloudKit via [web dashboard](https://icloud.developer.apple.com/). This is helpful for debug. e.g., change data on iPhone, but not synced to macOS, could verify whether the data already uploaded to cloud.
@@ -49,6 +53,9 @@ The mininum requirement for SwiftData is as following.
 
 But need to know, the earlier OS version may contains issue. E.g., iOS 17.0 has issue with SwiftData but fixed in iOS 17.1.
 
+Whend upgrade/change model, could use `migrationPlan`.
+
 ## Unknown
 
 - Not sure `.externalStorage` could be sync via CloudKit or not, what else need to do beside CloudKit sync itself.
+- Didn't find a way to sort by `modificationDate`. Could only manually maintain the modificationDate of the model, which is annoying.
