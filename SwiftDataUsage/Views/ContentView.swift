@@ -10,7 +10,17 @@ import SwiftData
 
 struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
-  @Query private var todos: [Todo]
+  
+  static private var showDone = true
+  
+  @Query(
+    filter: #Predicate<Todo>{ showDone ? true : !$0.isDone },
+    sort: [
+//      .init(\Todo.isDone),
+      .init(\.createAt, order: .reverse)
+    ],
+    animation: .bouncy)
+  private var todos: [Todo]
   
   var body: some View {
     NavigationSplitView {
