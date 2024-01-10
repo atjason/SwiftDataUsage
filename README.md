@@ -6,3 +6,10 @@
 - Add container with id of “iCloud.xxx”.
 
 Note: After the container created, need to wait some time util it could be used.
+
+Some limits:
+
+- The primary things to be aware of are that unique constraints are not supported.
+- Relationships must be optional ( even if you default them to empty arrays).
+- All values must have a default or be nil.
+- @Query doesn't update itself when installed on a view and it gets a push from the web -  [but there's a neat trick to get around it.](https://alexanderlogan.co.uk/blog/wwdc23/08-cloudkit-swift-data)

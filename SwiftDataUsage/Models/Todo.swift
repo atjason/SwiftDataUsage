@@ -11,7 +11,6 @@ import SwiftData
 @Model
 final class Todo: Equatable {
   
-  @Attribute(.unique)
   let id = UUID()
   var name: String = ""
   var isDone: Bool = false
