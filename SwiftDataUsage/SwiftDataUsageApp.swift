@@ -12,6 +12,15 @@ import SwiftData
 struct SwiftDataUsageApp: App {
   @Environment(\.undoManager) var undoManager
   
+  init() {
+    Task {
+      let status = await CloudKitHelper.checkCloudKitStatus()
+      if status != .available {
+        // Prompt user that CloudKit is unavailable and how to do.
+      }
+    }
+  }
+  
   let sharedModelContainer: ModelContainer = {
     let schema = Schema([
       Todo.self,

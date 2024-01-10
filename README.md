@@ -14,6 +14,7 @@ Some limits:
 - All values must have a default or be nil.
 - @Query doesn't update itself when installed on a view and it gets a push from the web -  [but there's a neat trick to get around it.](https://alexanderlogan.co.uk/blog/wwdc23/08-cloudkit-swift-data)
 
+Note: If user disables iCloud permission, the app will store the data locally, can't fetch from CloudKit, don't crash. If user enables again, it will upload the local data to CloudKit. This is test result.
 
 ## Default Storage Location
 
@@ -21,7 +22,7 @@ Some limits:
 - On the Mac, it's a shared location in the user's Library: `~/Library/Application Support/default.store`, which is a sqlite db.
 
 
-## Proble and Waldaround
+## Problem and Walkaround
 
 ### Can't manually trigger sync.
 
@@ -31,6 +32,23 @@ Could manually fetch recent changed data, and merge to local data.
   
 Use `.modelContainer(sharedModelContainer)` to debug. Use `.modelContainer(for: Todo.self, isUndoEnabled: true)` for release.
 
+### Can't pause or stop sync via CloudKit once it's enabled.
+
 ## Other Tips
 
 View CloudKit via [web dashboard](https://icloud.developer.apple.com/). This is helpful for debug. e.g., change data on iPhone, but not synced to macOS, could verify whether the data already uploaded to cloud.
+
+The mininum requirement for SwiftData is as following.
+- iOS 17.0+
+- iPadOS 17.0+
+- macOS 14.0+
+- Mac Catalyst 17.0+
+- tvOS 17.0+
+- watchOS 10.0+
+- visionOS 1.0+
+
+But need to know, the earlier OS version may contains issue. E.g., iOS 17.0 has issue with SwiftData but fixed in iOS 17.1.
+
+## Unknown
+
+- Not sure `.externalStorage` could be sync via CloudKit or not, what else need to do beside CloudKit sync itself.

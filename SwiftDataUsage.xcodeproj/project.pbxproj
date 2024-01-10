@@ -15,6 +15,7 @@
 		96CA533B2B4D8B8A00B08963 /* TodoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA533A2B4D8B8A00B08963 /* TodoDetail.swift */; };
 		96CA533D2B4E186D00B08963 /* TodoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA533C2B4E186D00B08963 /* TodoRow.swift */; };
 		96CA533F2B4E433100B08963 /* ContentViewManually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA533E2B4E433100B08963 /* ContentViewManually.swift */; };
+		96CA53422B4E7D4D00B08963 /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA53412B4E7D4D00B08963 /* CloudKitHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		96CA533A2B4D8B8A00B08963 /* TodoDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetail.swift; sourceTree = "<group>"; };
 		96CA533C2B4E186D00B08963 /* TodoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRow.swift; sourceTree = "<group>"; };
 		96CA533E2B4E433100B08963 /* ContentViewManually.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewManually.swift; sourceTree = "<group>"; };
+		96CA53412B4E7D4D00B08963 /* CloudKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				96CA53252B4D887600B08963 /* SwiftDataUsageApp.swift */,
 				96CA53382B4D8B3B00B08963 /* Views */,
 				96CA53392B4D8B4D00B08963 /* Models */,
+				96CA53402B4E7D3D00B08963 /* Utilities */,
 				96CA532B2B4D887800B08963 /* Assets.xcassets */,
 				96CA53312B4D887800B08963 /* Info.plist */,
 				96CA53302B4D887800B08963 /* SwiftDataUsage.entitlements */,
@@ -99,6 +102,14 @@
 				96CA53292B4D887600B08963 /* Todo.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		96CA53402B4E7D3D00B08963 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				96CA53412B4E7D4D00B08963 /* CloudKitHelper.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +185,7 @@
 				96CA533B2B4D8B8A00B08963 /* TodoDetail.swift in Sources */,
 				96CA533F2B4E433100B08963 /* ContentViewManually.swift in Sources */,
 				96CA53282B4D887600B08963 /* ContentView.swift in Sources */,
+				96CA53422B4E7D4D00B08963 /* CloudKitHelper.swift in Sources */,
 				96CA533D2B4E186D00B08963 /* TodoRow.swift in Sources */,
 				96CA532A2B4D887600B08963 /* Todo.swift in Sources */,
 				96CA53262B4D887600B08963 /* SwiftDataUsageApp.swift in Sources */,
@@ -235,7 +247,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -292,7 +304,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
