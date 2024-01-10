@@ -52,6 +52,15 @@ struct ContentView: View {
           }
         }
       }
+      
+      Spacer()
+      
+      NavigationLink {
+        ContentViewManually()
+      } label: {
+        Text("Manually")
+      }
+      
     } detail: {
       Text("Add a task first.")
     }

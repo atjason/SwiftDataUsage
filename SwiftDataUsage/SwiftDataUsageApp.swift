@@ -30,8 +30,7 @@ struct SwiftDataUsageApp: App {
   
   var body: some Scene {
     WindowGroup {
-//      ContentView()
-      ContentViewManually()
+      ContentView()
     }
     .modelContainer(sharedModelContainer)
 //    .modelContainer(for: Todo.self)
