@@ -20,3 +20,9 @@ final class Todo: Equatable {
     self.name = name
   }
 }
+
+extension Bool: Comparable {
+  public static func <(lhs: Self, rhs: Self) -> Bool {
+    return !lhs && rhs // the only true inequality is false < true
+  }
+}

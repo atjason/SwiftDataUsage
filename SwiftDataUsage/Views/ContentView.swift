@@ -69,12 +69,6 @@ struct ContentView: View {
   }
 }
 
-extension Bool: Comparable {
-  public static func <(lhs: Self, rhs: Self) -> Bool {
-    return !lhs && rhs // the only true inequality is false < true
-  }
-}
-
 #Preview {
   ContentView()
     .modelContainer(for: Todo.self)
