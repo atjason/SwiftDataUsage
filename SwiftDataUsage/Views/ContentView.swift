@@ -51,6 +51,16 @@ struct ContentView: View {
             Label("Add Item", systemImage: "plus")
           }
         }
+        ToolbarItem {
+          Button(action: { modelContext.undoManager?.undo() }) {
+            Label("Undo", systemImage: "arrow.uturn.backward")
+          }
+        }
+        ToolbarItem {
+          Button(action: { modelContext.undoManager?.redo() }) {
+            Label("Redo", systemImage: "arrow.uturn.forward")
+          }
+        }
       }
       
       Spacer()
@@ -80,5 +90,5 @@ struct ContentView: View {
 
 #Preview {
   ContentView()
-    .modelContainer(for: Todo.self)
+    .modelContainer(for: Todo.self, isUndoEnabled: true)
 }

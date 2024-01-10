@@ -21,3 +21,16 @@ Some limits:
 - On the Mac, it's a shared location in the user's Library: `~/Library/Application Support/default.store`, which is a sqlite db.
 
 
+## Proble and Waldaround
+
+### Can't manually trigger sync.
+
+Could manually fetch recent changed data, and merge to local data.
+
+### Can't enable undo if set model container via `.modelContainer(sharedModelContainer)`
+  
+Use `.modelContainer(sharedModelContainer)` to debug. Use `.modelContainer(for: Todo.self, isUndoEnabled: true)` for release.
+
+## Other Tips
+
+View CloudKit via [web dashboard](https://icloud.developer.apple.com/). This is helpful for debug. e.g., change data on iPhone, but not synced to macOS, could verify whether the data already uploaded to cloud.

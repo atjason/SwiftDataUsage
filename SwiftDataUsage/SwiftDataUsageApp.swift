@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct SwiftDataUsageApp: App {
+  @Environment(\.undoManager) var undoManager
   
   let sharedModelContainer: ModelContainer = {
     let schema = Schema([
@@ -32,7 +33,7 @@ struct SwiftDataUsageApp: App {
     WindowGroup {
       ContentView()
     }
-    .modelContainer(sharedModelContainer)
-//    .modelContainer(for: Todo.self)
+//    .modelContainer(sharedModelContainer)
+    .modelContainer(for: Todo.self, isUndoEnabled: true)
   }
 }
