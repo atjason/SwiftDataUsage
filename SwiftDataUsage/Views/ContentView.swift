@@ -11,29 +11,50 @@ import SwiftData
 struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
   
-  static private var showDone = true
-  
   @Query(
-    filter: #Predicate<Todo>{ showDone ? true : !$0.isDone },
+    filter: #Predicate<Todo>{ !$0.isDone },
     sort: [
-      .init(\Todo.isDone),
+//      .init(\Todo.isDone),
       .init(\Todo.createAt, order: .reverse)
     ],
     animation: .bouncy)
-  private var todos: [Todo]
+  private var todosOpen: [Todo]
+  
+  @Query(
+    filter: #Predicate<Todo>{ $0.isDone },
+    sort: [
+//      .init(\Todo.isDone),
+      .init(\Todo.createAt, order: .reverse)
+    ],
+    animation: .bouncy)
+  private var todosDone: [Todo]
   
   var body: some View {
     NavigationSplitView {
       List {
-        ForEach(todos) { todo in
-          NavigationLink {
-            TodoDetail(todo: todo)
-          } label: {
-            TodoRow(todo: todo)
+        Section() {
+          ForEach(todosOpen) { todo in
+            NavigationLink {
+              TodoDetail(todo: todo)
+            } label: {
+              TodoRow(todo: todo)
+            }
           }
+          .onDelete(perform: deleteItems)
         }
-        .onDelete(perform: deleteItems)
+        
+        Section("Done") {
+          ForEach(todosDone) { todo in
+            NavigationLink {
+              TodoDetail(todo: todo)
+            } label: {
+              TodoRow(todo: todo)
+            }
+          }
+          .onDelete(perform: deleteItems)
+        }
       }
+      .navigationTitle("Todo")
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           EditButton()
@@ -59,7 +80,7 @@ struct ContentView: View {
   private func deleteItems(offsets: IndexSet) {
     withAnimation {
       for index in offsets {
-        modelContext.delete(todos[index])
+        modelContext.delete(todosOpen[index])
       }
     }
   }
