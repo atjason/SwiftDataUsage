@@ -16,8 +16,8 @@ struct ContentView: View {
   @Query(
     filter: #Predicate<Todo>{ showDone ? true : !$0.isDone },
     sort: [
-//      .init(\Todo.isDone),
-      .init(\.createAt, order: .reverse)
+      .init(\Todo.isDone),
+      .init(\Todo.createAt, order: .reverse)
     ],
     animation: .bouncy)
   private var todos: [Todo]
@@ -65,7 +65,14 @@ struct ContentView: View {
   }
 }
 
+extension Bool: Comparable {
+  public static func <(lhs: Self, rhs: Self) -> Bool {
+    // the only true inequality is false < true
+    !lhs && rhs
+  }
+}
+
 #Preview {
   ContentView()
-    .modelContainer(for: Todo.self, inMemory: true)
+    .modelContainer(for: Todo.self)
 }
