@@ -9,15 +9,17 @@ import SwiftUI
 
 struct TodoDetail: View {
   
-//  @Bindable var todo: Todo
-  @State var todo: Todo
+  @Bindable var todo: Todo
   
   var body: some View {
     VStack {
       TextField("Task", text: $todo.name)
-      Toggle(isOn: .constant(true), label: {
-        Text("Label")
+        .textFieldStyle(.roundedBorder)
+        .padding(.vertical)
+      Toggle(isOn: $todo.isDone, label: {
+        Text("Done")
       })
+      Spacer()
     }
     .padding()
   }
