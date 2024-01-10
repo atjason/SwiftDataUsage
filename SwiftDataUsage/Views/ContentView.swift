@@ -12,7 +12,7 @@ struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
   
   @Query(
-//    filter: #Predicate<Todo>{ !$0.isDone },
+    //    filter: #Predicate<Todo>{ !$0.isDone },
     sort: [
       .init(\Todo.isDone),
       .init(\Todo.createAt, order: .reverse)
@@ -53,30 +53,25 @@ struct ContentView: View {
         }
       }
     } detail: {
-      Text("Select an item")
+      Text("Add a task first.")
     }
   }
   
   private func addItem() {
-    withAnimation {
-      let newItem = Todo(name: "New Task")
-      modelContext.insert(newItem)
-    }
+    let newItem = Todo(name: "New Task")
+    modelContext.insert(newItem)
   }
   
   private func deleteItems(offsets: IndexSet) {
-    withAnimation {
-      for index in offsets {
-        modelContext.delete(todos[index])
-      }
+    for index in offsets {
+      modelContext.delete(todos[index])
     }
   }
 }
 
 extension Bool: Comparable {
   public static func <(lhs: Self, rhs: Self) -> Bool {
-    // the only true inequality is false < true
-    !lhs && rhs
+    return !lhs && rhs // the only true inequality is false < true
   }
 }
 
